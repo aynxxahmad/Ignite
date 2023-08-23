@@ -1,6 +1,4 @@
-const key = process.env.REACT_APP_RAWG_API;
-
-const baseURL = `https://api.rawg.io/api/games?key=${key}&`;
+const baseURL = `https://api.rawg.io/api/games?key=${process.env.REACT_APP_RAWG_API}&`;
 
 //getting the date
 const getCurrentYear = () => {
@@ -42,6 +40,6 @@ export const upcomingGamesURL = () => `${baseURL}dates=${currentDate},${nextYear
 
 
 //other urls
-export const gameDetailsURL = (game_id) => `https://api.rawg.io/api/games/${game_id}?key=${key}`;
-export const gameScreenShotsURL = (game_id) => `https://api.rawg.io/api/games/${game_id}/screenshots?key=${key}`;
-export const searchedGameURL = (game_name) =>  `https://api.rawg.io/api/games?key=${key}&search=${game_name}&search_exact=true&search_precise=true&ordering=-rating&page_size=12` ;
+export const gameDetailsURL = (game_id) => `https://api.rawg.io/api/games/${game_id}?key=${process.env.REACT_APP_RAWG_API}`;
+export const gameScreenShotsURL = (game_id) => `https://api.rawg.io/api/games/${game_id}/screenshots?key=${process.env.REACT_APP_RAWG_API}`;
+export const searchedGameURL = (game_name) =>  `https://api.rawg.io/api/games?key=${process.env.REACT_APP_RAWG_API}&search=${game_name}&search_exact=true&search_precise=true&ordering=-rating&page_size=12` ;
