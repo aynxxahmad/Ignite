@@ -2,6 +2,9 @@ import React from "react";
 import styled from "styled-components"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft} from "@fortawesome/free-solid-svg-icons";
+import {motion} from "framer-motion";
+import { pageAnim } from "../animation";
+
 import {useSelector} from "react-redux";
 import Game from "../components/Game";
 import { useNavigate } from "react-router-dom";
@@ -18,12 +21,12 @@ const SearchedPage = () => {
     return(
         <>
         {data && !loading && (
-            <>
+            <motion.div variants={pageAnim} initial="hidden" animate="show" exit="exit" >
         <StyledButton onClick={goBackHandler}><FontAwesomeIcon icon={faAngleLeft} size="2x" /></StyledButton>
         <Searched>
             {data.map((game) => <Game game={game} key={game.id}/>)}
         </Searched>
-            </>
+            </motion.div>
         )}
         </>
     )

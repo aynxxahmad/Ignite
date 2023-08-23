@@ -3,6 +3,7 @@ import React,{useEffect} from "react";
 //styling and animation
 import styled from "styled-components";
 import {motion} from "framer-motion"
+import { pageAnim } from "../animation";
 
 //redux
 import { useSelector,useDispatch } from "react-redux";
@@ -28,25 +29,30 @@ const Home = () => {
 
     //getting the data back
     const {popularGames,newGames,upcomingGames} = useSelector((state) => state.games.data);
+    const loading = useSelector((state) => state.games.loading);
     return(
       <>
-        <NavBar/>
-        <Banner/>
-        <GameList>
-          <h2>Popular Games</h2>
-          <Games>
-        {popularGames.map(game => <Game game={game} key={game.id}/>)}
-          </Games>
-          <h2>New Games</h2>
-          <Games>
-            {newGames.map(game => <Game game={game} key={game.id}/>)}
-          </Games>
-          <h2>Upcoming Games</h2>
-          <Games>
-            {upcomingGames.map(game => <Game game={game} key={game.id}/>)}
-          </Games>
-        </GameList> 
-      </>
+      {!loading && (
+      <motion.div variants={pageAnim} initial="hidden" animate="show" exit="exit" >
+        <NavBar />
+            <Banner/>
+            <GameList>
+              <h2>Popular Games</h2>
+              <Games>
+                {popularGames.map(game => <Game game={game} key={game.id}/>)}
+              </Games>
+              <h2>New Games</h2>
+              <Games>
+                {newGames.map(game => <Game game={game} key={game.id}/>)}
+              </Games>
+              <h2>Upcoming Games</h2>
+              <Games>
+                {upcomingGames.map(game => <Game game={game} key={game.id}/>)}
+              </Games>
+            </GameList>
+          </motion.div>
+        )}
+        </>
     )
 }
 

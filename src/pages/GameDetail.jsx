@@ -1,5 +1,4 @@
 import React,{useEffect} from "react";
-import styled from "styled-components"
 import {useLocation ,useNavigate } from "react-router-dom";
 
 //components
@@ -9,8 +8,15 @@ import Stats from "../components/Stats";
 import {useSelector,useDispatch} from "react-redux";
 import {fetchGameDetails} from "../features/gameDetailsSlice";
 import {fetchScreenShots} from "../features/gameScreenshotSlice";
+
+//style and animation
+import styled from "styled-components"
+import {motion} from "framer-motion";
+import { pageAnim } from "../animation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft} from "@fortawesome/free-solid-svg-icons";
+
+
 
 
 
@@ -32,7 +38,7 @@ const GameDetail = () => {
         return () => {
             //cleanup
         }
-    },[id])
+    },[id,dispatch])
 
     const {data,loading} = useSelector((store) => store.gameDetails);
     const screenShots = useSelector((store) => store.gameScreenshots.data);
@@ -46,7 +52,7 @@ const GameDetail = () => {
     return(
         <>
             {data && screenShots && !loading && (
-            <StyledDetails>
+            <StyledDetails variants={pageAnim} initial="hidden" animate="show" exit="exit" >
                 <div className="background-image">
                     <img src={data.background_image} alt={`${data.name} img`} />
                 </div>
@@ -79,7 +85,7 @@ const GameDetail = () => {
 //styled components
 
 
-const StyledDetails = styled.div`
+const StyledDetails = styled(motion.div)`
     min-height:100vh;
     background-color: #1b1b1b;
     position: relative;
