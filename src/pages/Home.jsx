@@ -6,8 +6,7 @@ import {motion} from "framer-motion"
 import { pageAnim } from "../animation";
 
 //redux
-import { useSelector,useDispatch } from "react-redux";
-import { fetchGames } from "../features/gamesSlice";
+import { useSelector} from "react-redux";
 
 //importing components
 import NavBar from "../components/NavBar";
@@ -18,14 +17,6 @@ import Game from "../components/Game";
 
 
 const Home = () => {
-
-    const dispatch = useDispatch();
-    useEffect(()=>{
-      dispatch(fetchGames()); //dispatching the fetch games action creator(in context of redux toolkit- async thunk)
-      return () => {
-        //cleanup
-      }
-    },[dispatch])
 
     //getting the data back
     const {popularGames,newGames,upcomingGames} = useSelector((state) => state.games.data);
