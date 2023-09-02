@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React from "react";
 
 //styling and animation
 import styled from "styled-components";
@@ -26,20 +26,20 @@ const Home = () => {
       {!loading && (
       <motion.div variants={pageAnim} initial="hidden" animate="show" exit="exit" >
         <NavBar />
-            <Banner/>
+        <Banner/>
             <GameList>
-              <h2>Popular Games</h2>
-              <Games>
-                {popularGames.map(game => <Game game={game} key={game.id}/>)}
-              </Games>
-              <h2>New Games</h2>
-              <Games>
-                {newGames.map(game => <Game game={game} key={game.id}/>)}
-              </Games>
-              <h2>Upcoming Games</h2>
-              <Games>
-                {upcomingGames.map(game => <Game game={game} key={game.id}/>)}
-              </Games>
+                <h2>Popular Games</h2>
+                <Games>
+                  {popularGames.map(game => <Game game={game} key={game.id}/>)}
+                </Games>
+                <h2>New Games</h2>
+                <Games>
+                  {newGames.map(game => <Game game={game} key={game.id}/>)}
+                </Games>
+                <h2>Upcoming Games</h2>
+                <Games>
+                  {upcomingGames.map(game => <Game game={game} key={game.id}/>)}
+                </Games>
             </GameList>
           </motion.div>
         )}
@@ -47,6 +47,7 @@ const Home = () => {
     )
 }
 
+//styled components
 
 const GameList = styled.div`
   padding:0.5rem;

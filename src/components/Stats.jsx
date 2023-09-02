@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components"
 
 //images
-import star from "../img/star.png";
 import playStation from "../img/playstation.svg";
 import steam from "../img/steam.svg";
 import xbox from "../img/xbox.svg";
@@ -75,35 +74,39 @@ const StyledStats = styled.div`
     }
 
     .platforms {
-        text-align: center;
+        text-align: end;
         display: flex;
         flex-direction: column;
         margin-right: 2rem;
-
+        flex:2;
         .icons{
             display: flex;
-            justify-content: space-around;
+            justify-content: flex-end;
             align-items: center;
-            flex: wrap;
-            width: 100%;
+            flex-wrap:wrap;
             position: relative;
             .icon{
                 img{
                     height: 2.5rem;
                     position: relative;
-                    margin: 0 1.75rem;
+                    margin-left: 2rem;
+                    margin-right: 2rem;
+                    margin-top:1.25rem;
+                    cursor:pointer;
                 }
                 &::before{
                     content: attr(data-name);
+                    min-width:3.5rem;
+                    text-align: center;
                     font-size:1.25rem;
                     position: absolute;
-                    top: -40px;
+                    top: -50px;
                     background-color: rgba(0,0,0,0.7);
                     color: #fafafa;
-                    height: 4rem;
+                    height: 3rem;
                     display: none;
                     z-index: 10;
-                    padding: 0.5rem;
+                    padding: 0.75rem;
                     border: none;
                     border-radius: 1rem;
                 }

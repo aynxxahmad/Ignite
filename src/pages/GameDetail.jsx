@@ -12,7 +12,7 @@ import {fetchScreenShots} from "../features/gameScreenshotSlice";
 //style and animation
 import styled from "styled-components"
 import {motion} from "framer-motion";
-import { pageAnim } from "../animation";
+import { pageAnim,drawerAnim } from "../animation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft} from "@fortawesome/free-solid-svg-icons";
 
@@ -56,7 +56,7 @@ const GameDetail = () => {
                 <div className="background-image">
                     <img src={data.background_image} alt={`${data.name} img`} />
                 </div>
-                <div className="details-div">
+                <motion.div className="details-div" variants={drawerAnim} initial="hidden" animate="show" exit="exit">
                     <PrimaryInfo>
                         <button onClick={goBackHandler}><FontAwesomeIcon icon={faAngleLeft} size="2x" /></button>
                         <h3>{data.name}</h3>
@@ -73,7 +73,7 @@ const GameDetail = () => {
                             <img src={img.image} alt="gallery-img" key={img.id} />
                         ))}
                     </Gallery>
-                </div>
+                </motion.div>
             </StyledDetails>
             )}
         </>
